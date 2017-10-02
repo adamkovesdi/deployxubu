@@ -1,4 +1,4 @@
-- name: Install CLI network utilities
+- name: Install CLI net utilities
   apt:
     name: "{{ item }}"
     state: present
@@ -14,7 +14,7 @@
     - openvpn
     - openconnect
 
-- name: Install GUI network utilities
+- name: Install GUI net utilities
   apt:
     name: "{{ item }}"
     state: present

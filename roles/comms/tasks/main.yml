@@ -1,4 +1,4 @@
-- name: Install communications packages
+- name: Install comms packages
   apt:
     name: "{{ item }}"
     state: present

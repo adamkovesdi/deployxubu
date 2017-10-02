@@ -1,8 +1,9 @@
 - name: Install packages from apt
   hosts: all 
   roles:
-    - common
-    - net
+    - basic
     - comms
+    - net
     - office
-      # - devel
+    - utils
+    - devel

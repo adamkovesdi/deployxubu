@@ -1,4 +1,4 @@
-- name: Install various utilities
+- name: Install other utils
   apt:
     name: "{{ item }}"
     state: present
@@ -7,13 +7,17 @@
   with_items:
     - kupfer
     - ansible
+    - apt-file
     - cryptsetup
+    - expect
     - galculator
     - id3ren
     - id3v2
+    - mplayer
     - pulseaudio-module-bluetooth
     - sox
     - sshpass
+    - sqlite3
+    - vlc
     - vorbis-tools
     - xfce4-clipman
-    - xdotool
