@@ -1,0 +1,4 @@
+- name: Transfer files to remote machine 
+  hosts: all 
+  roles:
+    - pushfiles

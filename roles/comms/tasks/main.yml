@@ -1,0 +1,12 @@
+- name: Install communications packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - thunderbird
+    - chromium-browser
+    - firefox
+    - pidgin
+    - minicom
+    - picocom

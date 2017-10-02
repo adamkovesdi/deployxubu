@@ -1,0 +1,18 @@
+- name: Clone dotfiles from github.com
+  git:
+    repo: "{{ githubrepo }}" 
+    dest: "/home/{{ deployuser }}/.dotfiles"
+
+- name: Link dotfiles to their respective locations
+  file:
+    src: /home/{{ deployuser }}/.dotfiles/{{ item.path }}
+    dest: /home/{{ deployuser }}/{{ item.dest }}
+    state: link
+  with_items:
+    - { path: 'vim', dest: '.vim' }
+    - { path: 'vimrc', dest: '.vimrc' }
+    - { path: 'zshrc', dest: '.zshrc' }
+    - { path: 'tmux.conf', dest: '.tmux.conf' }
+
+
+

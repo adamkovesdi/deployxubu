@@ -1,0 +1,27 @@
+- name: Install CLI network utilities
+  apt:
+    name: "{{ item }}"
+    state: present
+    install_recommends: yes
+  become: true
+  with_items:
+    - curl
+    - wget
+    - netcat
+    - nmap
+    - lftp
+    - w3m
+    - openvpn
+    - openconnect
+
+- name: Install GUI network utilities
+  apt:
+    name: "{{ item }}"
+    state: present
+    install_recommends: yes
+  become: true
+  with_items:
+    - network-manager-openconnect
+    - network-manager-openconnect-gnome
+    - network-manager-openvpn
+    - network-manager-openvpn-gnome

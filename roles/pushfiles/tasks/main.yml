@@ -1,0 +1,14 @@
+- name: Push files from home directory to target machine home directory
+  copy:
+    src: "~/{{ item }}/"
+    dest: "~/{{ item }}"
+  with_items:
+    - bin
+    - .config/galculator
+    - .config/autostart
+    - .config/kupfer
+    - .config/xfce4
+    - .config/Thunar
+    - .config/gtk-3.0
+    - .config/ranger
+    - .themes/riztheme

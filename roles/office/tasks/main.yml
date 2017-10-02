@@ -1,0 +1,10 @@
+- name: Install office programs
+  apt:
+    name: "{{ item }}"
+    state: present
+    install_recommends: yes
+  become: true
+  with_items:
+    - libreoffice
+    - inkscape
+    - gimp

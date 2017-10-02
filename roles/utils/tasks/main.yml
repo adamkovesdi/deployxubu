@@ -1,0 +1,19 @@
+- name: Install various utilities
+  apt:
+    name: "{{ item }}"
+    state: present
+    install_recommends: yes
+  become: true
+  with_items:
+    - kupfer
+    - ansible
+    - cryptsetup
+    - galculator
+    - id3ren
+    - id3v2
+    - pulseaudio-module-bluetooth
+    - sox
+    - sshpass
+    - vorbis-tools
+    - xfce4-clipman
+    - xdotool
