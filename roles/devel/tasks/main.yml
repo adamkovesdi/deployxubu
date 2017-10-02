@@ -1,0 +1,17 @@
+- name: Install devel tools
+  apt:
+    name: "{{ item }}"
+    state: present
+    install_recommends: yes
+  become: true
+  with_items:
+    - gcc
+    - python
+    - python-pip
+    - ruby
+    - rubygems-integration
+    - rake
+    - avr-libc
+    - avrdude
+    - gcc-avr
+    - g++

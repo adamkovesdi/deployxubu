@@ -1,0 +1,21 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  become: true
+
+- name: Install basic tools
+  apt:
+    name: "{{ item }}"
+    state: present
+    force: yes
+  become: true
+  with_items:
+    - cli-common
+    - zsh
+    - gcc
+    - make
+    - vim
+    - tmux
+    - ranger
+    - p7zip
+    - vifm
