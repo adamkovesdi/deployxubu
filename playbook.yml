@@ -1,2 +1,5 @@
 - import_playbook: packages.yml
-# - import_playbook: userconfig.yml
+- import_playbook: userconfig.yml
+
+# better to call this explicitly on demand
+# - import_playbook: files.yml
