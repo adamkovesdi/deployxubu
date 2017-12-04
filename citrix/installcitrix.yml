@@ -1,24 +1,41 @@
-
 #
 # WARNING!
 #
 # To make this work, first you need to download the icaclient current version deb archive
-#
+# Read this HOWTO:
+# https://help.ubuntu.com/community/CitrixICAClientHowTo
 #
 
 
 - hosts: xubuntu-desktops
   vars:
-    citrixdeb: "icaclient_13.7.0.10276927_amd64.deb"
+    citrixdeb: "icaclient_13.4.0.10109380_amd64.deb"
+    # new version does not work for us:
+    # citrixdebnew: "icaclient_13.7.0.10276927_amd64.deb"
   tasks:
     - name: Push citrix deb to target machine
       copy:
         src: "{{ citrixdeb }}"
         dest: "/root/"
-      become: true
+      become: yes
 
     - name: Install citrix receiver
       apt:
         deb: "/root/{{ citrixdeb }}"
         state: present
-      become: true
+      become: yes
+
+# TODO: ansible way to do the following
+#
+# sudo ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts/
+# sudo c_rehash /opt/Citrix/ICAClient/keystore/cacerts/
+#
+# Ansible eats my wildcards
+#
+#    - name: Install Citrix certificates
+#      command: "ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts/"
+#      become: true
+#
+#    - name: Rehash Citrix certificates
+#      command: "c_rehash /opt/Citrix/ICAClient/keystore/cacerts/"
+#      become: true
