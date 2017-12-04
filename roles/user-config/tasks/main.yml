@@ -2,7 +2,7 @@
   become: yes
   user:
     name: "{{ deployuser }}"
-    shell: "/bin/bash"
+    shell: "/bin/zsh"
     createhome: yes
 
 - name: Set up authorized keys for the {{ deployuser }} user

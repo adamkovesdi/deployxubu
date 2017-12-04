@@ -1,0 +1,5 @@
+- name: push Terminal.desktop 
+  become: true
+  copy:
+    src: 'usr/share/applications/Terminal.desktop'
+    dest: '/usr/share/applications/Terminal.desktop'

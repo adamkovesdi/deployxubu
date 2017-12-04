@@ -9,6 +9,11 @@
     - sys-utils
     - sys-devel
 
+- name: Xubuntu tweaks
+  hosts: xubuntu-desktops
+  roles:
+    - sys-xfce4term
+
 - name: User configuration
   hosts: xubuntu-desktops
   roles:
