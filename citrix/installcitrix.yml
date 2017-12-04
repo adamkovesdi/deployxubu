@@ -1,0 +1,24 @@
+
+#
+# WARNING!
+#
+# To make this work, first you need to download the icaclient current version deb archive
+#
+#
+
+
+- hosts: xubuntu-desktops
+  vars:
+    citrixdeb: "icaclient_13.7.0.10276927_amd64.deb"
+  tasks:
+    - name: Push citrix deb to target machine
+      copy:
+        src: "{{ citrixdeb }}"
+        dest: "/root/"
+      become: true
+
+    - name: Install citrix receiver
+      apt:
+        deb: "/root/{{ citrixdeb }}"
+        state: present
+      become: true
