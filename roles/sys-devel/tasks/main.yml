@@ -6,6 +6,7 @@
   become: true
   with_items:
     - gcc
+    - git
     - python
     - python-pip
     - ruby

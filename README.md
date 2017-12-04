@@ -56,3 +56,6 @@ find -name 'main.yml' -type f | grep task | xargs -r vim
 ```
 This will explode on your vim.
 
+## Acknowledgements
+
+Jeff Geerling for docker installer role
