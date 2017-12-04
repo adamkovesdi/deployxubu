@@ -1,5 +1,0 @@
-- name: User configuration
-  hosts: all 
-  roles:
-    - userconfig
-    - dotfiles

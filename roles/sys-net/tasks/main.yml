@@ -13,6 +13,7 @@
     - w3m
     - openvpn
     - openconnect
+    - transmission
 
 - name: Install GUI net utilities
   apt:

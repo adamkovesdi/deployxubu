@@ -1,22 +1,58 @@
-# ansible playbooks for deploying my desktop machine
+# Ansible playbooks for deploying my desktop machine
 
 This is a collection of playbooks and roles to quickly pre-deploy my work environment on a fresh installation of Xubuntu.
 
 ```
-playbook.yml     top level playbook including the others
-userconfig.yml   my user config playbook
-packages.yml     package installer playbook
-files.yml        migration playbook to transfer my local files to the new machine
+playbook.yml     top level playbook - run this
+pushfiles.yml    migration playbook - copies files from ansible machine to target system 
 
-ansible.cfg      inventory + configuration
+ansible.cfg      configuration for Ansible
 roles/           my custom roles directory
 hosts            inventory file (not included)
-edittasks.sh     helper script to edit all files
-run.sh           run script for migration
 
 ```
-## notes on playbooks
 
-Not exactly production ready code here, rather a dirty hack but it works and suits the purpose for me.  
-Further improvements may come in the future.
+## Preparation
+
+Create a hosts file with similar contents, and edit according to setup
+```
+# Ansible inventory file for xubuntu machines
+
+[all:vars]
+deployuser="SOMEUSER"
+seconduser="SOMEONEELSE"
+
+[xubuntu-desktops]
+192.168.1.12 ansible_user="ANSIBLEUSER"
+
+```
+
+## Run the whole thing
+
+```
+ansible-playbook -k -K playbook.yml
+```
+Caution with the following
+```
+ansible-playbook -k -K pushfiles.yml
+```
+
+It is wise to run a check beforehand:
+
+```
+ansible-playbook -C -k -K playbook.yml
+```
+
+## Notes on playbooks
+
+This is a "quick and dirty" solution for my own needs.  
+It does not mean it is not useful but certainly could be better executed.  
+As me and my household iterates through desktops it gets more mature.
+
+## Edit tasks in batch
+
+```
+find -name 'main.yml' -type f | grep task | xargs -r vim
+```
+This will explode on your vim.
 

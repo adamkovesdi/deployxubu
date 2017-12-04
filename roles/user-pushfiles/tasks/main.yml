@@ -1,4 +1,4 @@
-- name: Push files from home directory to target machine home directory
+- name: Push files from ansible runner host home directory to target machine home directory
   copy:
     src: "~/{{ item }}/"
     dest: "~/{{ item }}"
@@ -11,4 +11,3 @@
     - .config/Thunar
     - .config/gtk-3.0
     - .config/ranger
-    - .themes/riztheme

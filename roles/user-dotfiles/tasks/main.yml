@@ -1,6 +1,6 @@
-- name: Clone dotfiles from github.com
+- name: Clone dotfiles from {{ dotfilesrepo }}
   git:
-    repo: "{{ githubrepo }}" 
+    repo: "{{ dotfilesrepo }}" 
     dest: "/home/{{ deployuser }}/.dotfiles"
 
 - name: Link dotfiles to their respective locations
@@ -14,5 +14,9 @@
     - { path: 'zshrc', dest: '.zshrc' }
     - { path: 'tmux.conf', dest: '.tmux.conf' }
 
+- name: Install Xubuntu theme
+  git:
+    repo: "{{ themerepo }}" 
+    dest: "/home/{{ deployuser }}/.themes/riztheme"
 
 

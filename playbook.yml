@@ -1,5 +1,25 @@
-- import_playbook: packages.yml
-- import_playbook: userconfig.yml
 
-# better to call this explicitly on demand
-# - import_playbook: files.yml
+- name: Install packages from apt
+  hosts: xubuntu-desktops
+  roles:
+    - sys-basic
+    - sys-comms
+    - sys-net
+    - sys-office
+    - sys-utils
+    - sys-devel
+
+- name: User configuration
+  hosts: xubuntu-desktops
+  roles:
+    - user-config
+    - user-dotfiles
+
+- name: Docker installation
+  hosts: xubuntu-desktops
+  roles:
+    - sys-installdocker
+    - user-dockergroupfix
+
+# pushfiles role should be run manually
+

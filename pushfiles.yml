@@ -1,0 +1,5 @@
+
+- name: Push files from ansible runner host to target machine (migration) 
+  hosts: xubuntu-desktops
+  roles:
+    - user-pushfiles

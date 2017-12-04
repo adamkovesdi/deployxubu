@@ -1,0 +1,46 @@
+- name: Make sure {{ deployuser }} user is present
+  become: yes
+  user:
+    name: "{{ deployuser }}"
+    shell: "/bin/bash"
+    createhome: yes
+
+- name: Set up authorized keys for the {{ deployuser }} user
+  authorized_key:
+    user: "{{ deployuser }}"
+    key: "{{ item }}"
+  with_file:
+    - ~/.ssh/id_rsa.pub
+
+- name: Make sure we have a 'wheel' group
+  become: yes
+  group:
+    name: wheel
+    state: present
+
+- name: Allow 'wheel' group to have passwordless sudo
+  become: yes
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+
+- name: Add {{ deployuser }} to wheel group
+  become: yes
+  user: name={{ deployuser }} groups=wheel append=yes
+
+- name: Add {{ deployuser }} to adm, dialout, sudo group
+  become: yes
+  user: name={{ deployuser }} groups="adm, dialout, sudo" append=yes
+
+- name: Make sure {{ seconduser }} user is present
+  become: yes
+  user:
+    name: "{{ seconduser }}"
+    shell: "/bin/bash"
+    createhome: yes
+
+- name: Add {{ seconduser }} to adm, dialout, sudo group
+  become: yes
+  user: name={{ seconduser }} groups="adm, dialout, sudo" append=yes

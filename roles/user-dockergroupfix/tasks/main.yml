@@ -1,0 +1,6 @@
+- name: add {{ deployuser }} to docker group
+  become: true
+  user:
+    name: "{{ deployuser }}"
+    groups: "docker"
+    append: yes
