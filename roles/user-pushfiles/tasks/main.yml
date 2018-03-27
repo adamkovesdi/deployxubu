@@ -11,3 +11,4 @@
     - .config/Thunar
     - .config/gtk-3.0
     - .config/ranger
+    - .xsession
