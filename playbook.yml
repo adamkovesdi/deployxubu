@@ -8,6 +8,7 @@
     - sys-office
     - sys-utils
     - sys-devel
+    - sys-capsesc
 
 - name: Xubuntu tweaks
   hosts: xubuntu-desktops

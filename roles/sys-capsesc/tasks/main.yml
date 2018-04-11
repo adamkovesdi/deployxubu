@@ -1,0 +1,7 @@
+- name: Remap CAPSLOCK to ESC
+  become: true
+  lineinfile:
+    dest: /etc/default/keyboard
+    state: present
+    regexp: '^XKBOPTIONS'
+    line: 'XKBOPTIONS="caps:escape"'
